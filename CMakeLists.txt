@@ -18,8 +18,11 @@ add_executable(helloworld_cli main.cpp)
 add_library(helloworld lib.cpp)
 
 #add_executable(test_version test_version.cpp)
-add_executable(tests test_version.cpp test_benchmark.cpp)
+add_executable(tests test_version.cpp)
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
+
+add_executable(tests_bench test_benchmark.cpp)
+target_link_libraries(tests_bench PRIVATE Catch2::Catch2WithMain)
 
 set_target_properties(helloworld_cli helloworld tests PROPERTIES
     CXX_STANDARD 20
@@ -62,6 +65,10 @@ else ()
         -Wall -Wextra -pedantic -Werror
     )
 
+    target_compile_options(tests_bench PRIVATE
+        -Wall -Wextra -pedantic -Werror
+    )
+
 endif()
 
 
@@ -80,4 +87,4 @@ include(CPack)
 
 enable_testing()
 
-add_test(tests tests)
+add_test(tests tests tests_bench)
