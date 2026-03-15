@@ -80,4 +80,4 @@ include(CPack)
 
 enable_testing()
 
-add_test(tests)
+add_test(tests tests)
