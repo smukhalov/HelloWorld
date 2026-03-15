@@ -48,7 +48,7 @@ if (MSVC)
     target_compile_options(helloworld PRIVATE
         /W4
     )
-    target_compile_options(test_version PRIVATE
+    target_compile_options(tests PRIVATE
         /W4
     )
 else ()
@@ -80,4 +80,4 @@ include(CPack)
 
 enable_testing()
 
-add_test(tests test_version test_benchmark)
+add_test(tests)
